@@ -1,6 +1,9 @@
 # Claude Code local settings (machine-specific, not shared)
 .claude/settings.local.json
 
+# MCP server config (contains API tokens)
+.mcp.json
+
 # OS cruft
 .DS_Store
 Thumbs.db

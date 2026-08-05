@@ -487,6 +487,60 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
   display:flex;align-items:center;justify-content:center;
 }
 .post-media .placeholder-icon{font-size:3rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15));}
+.post-media[style*="background-image"]{cursor:zoom-in;}
+.post-media[style*="background-image"]::before{
+  content:'\2922';position:absolute;top:12px;right:12px;z-index:2;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(20,14,8,.5);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;opacity:0;transform:scale(.8);
+  transition:opacity .3s ease, transform .3s ease;
+  pointer-events:none;
+}
+.gallery-item:hover .post-media[style*="background-image"]::before{opacity:1;transform:scale(1);}
+
+/* =============================================================
+   LIGHTBOX
+============================================================= */
+.lightbox{
+  position:fixed;inset:0;z-index:9500;
+  background:rgba(20,14,8,.92);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:opacity .35s ease, visibility .35s ease;
+  padding:60px 40px;
+}
+.lightbox.open{opacity:1;visibility:visible;}
+.lightbox-content{max-width:min(900px,88vw);max-height:85vh;display:flex;flex-direction:column;align-items:center;}
+.lightbox-img{
+  max-width:100%;max-height:75vh;border-radius:10px;object-fit:contain;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  transform:scale(.94);transition:transform .35s cubic-bezier(.16,.84,.44,1);
+  background:#111;
+}
+.lightbox.open .lightbox-img{transform:scale(1);}
+.lightbox-caption{color:#fff;margin-top:18px;font-size:1.02rem;text-align:center;max-width:600px;font-family:var(--font-head);}
+.lightbox-close{
+  position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;
+  font-size:2rem;line-height:1;cursor:pointer;width:46px;height:46px;border-radius:50%;
+  transition:background .3s;display:flex;align-items:center;justify-content:center;
+}
+.lightbox-close:hover{background:rgba(255,255,255,.15);}
+.lightbox-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;
+  width:50px;height:50px;border-radius:50%;font-size:1.8rem;cursor:pointer;
+  transition:background .3s;display:flex;align-items:center;justify-content:center;
+}
+.lightbox-arrow:hover{background:rgba(255,255,255,.25);}
+.lightbox-prev{left:20px;}
+.lightbox-next{right:20px;}
+@media(max-width:600px){
+  .lightbox{padding:20px 12px;}
+  .lightbox-arrow{width:40px;height:40px;font-size:1.4rem;}
+  .lightbox-prev{left:6px;}
+  .lightbox-next{right:6px;}
+  .lightbox-close{top:10px;right:12px;}
+}
 .post-footer{padding:12px 14px 14px;}
 .post-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
 .post-avatar{
@@ -496,7 +550,19 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
   color:#fff;font-size:.68rem;font-weight:700;font-family:var(--font-head);
 }
 .post-handle{font-size:.78rem;font-weight:600;color:var(--ink);}
-.post-heart{margin-left:auto;display:flex;align-items:center;gap:4px;color:var(--rose);font-size:.78rem;font-weight:600;}
+.post-heart{
+  margin-left:auto;display:flex;align-items:center;gap:4px;color:var(--rose);font-size:.78rem;font-weight:600;
+  cursor:pointer;user-select:none;transition:transform .15s ease, color .2s ease;
+}
+.post-heart:active{transform:scale(.85);}
+.post-heart.liked{color:#E0407D;}
+.post-heart.pop{animation:heartPop .4s ease;}
+@keyframes heartPop{
+  0%{transform:scale(1);}
+  35%{transform:scale(1.5);}
+  60%{transform:scale(.9);}
+  100%{transform:scale(1);}
+}
 .post-caption{font-size:.82rem;color:#4A3F33;line-height:1.45;}
 .gallery-note{text-align:center;margin-top:40px;color:#6E6255;font-size:.95rem;}
 .gallery-note a{color:var(--gold);font-weight:600;}
@@ -1435,6 +1501,17 @@ footer{background:var(--charcoal);border-top:1px solid rgba(221,165,32,.15);padd
 <!-- SCROLL TO TOP -->
 <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">↑</button>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&lsaquo;</button>
+  <div class="lightbox-content">
+    <img class="lightbox-img" id="lightboxImg" alt="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+  <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo">&rsaquo;</button>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -1606,6 +1683,104 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 /* =============================================================
+   GALLERY LIGHTBOX
+============================================================= */
+(() => {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  let photoItems = [];
+  let currentIndex = 0;
+
+  function extractUrl(bgImage) {
+    const match = bgImage.match(/url\(["']?([^"')]+)["']?\)/);
+    return match ? match[1] : '';
+  }
+
+  function getPhotoItems() {
+    return [...document.querySelectorAll('.gallery-item')].filter(item => {
+      const media = item.querySelector('.post-media');
+      return media && media.style.backgroundImage;
+    });
+  }
+
+  function showPhoto(index) {
+    const item = photoItems[index];
+    const media = item.querySelector('.post-media');
+    const caption = item.querySelector('.post-caption');
+    lightboxImg.src = extractUrl(media.style.backgroundImage);
+    lightboxCaption.textContent = caption ? caption.textContent : '';
+  }
+
+  function openLightbox(item) {
+    photoItems = getPhotoItems();
+    currentIndex = photoItems.indexOf(item);
+    if (currentIndex === -1) return;
+    showPhoto(currentIndex);
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navPhoto(delta) {
+    currentIndex = (currentIndex + delta + photoItems.length) % photoItems.length;
+    showPhoto(currentIndex);
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const media = item.querySelector('.post-media');
+    if (media) {
+      media.addEventListener('click', () => {
+        if (media.style.backgroundImage) openLightbox(item);
+      });
+    }
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => navPhoto(-1));
+  document.getElementById('lightboxNext').addEventListener('click', () => navPhoto(1));
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navPhoto(-1);
+    if (e.key === 'ArrowRight') navPhoto(1);
+  });
+})();
+
+/* =============================================================
+   GALLERY LIKE BUTTONS
+============================================================= */
+document.querySelectorAll('.post-heart').forEach(heart => {
+  const baseCount = parseInt(heart.textContent.replace(/[^\d]/g, ''), 10) || 0;
+  heart.dataset.baseCount = baseCount;
+  heart.dataset.liked = 'false';
+  heart.innerHTML = `&#9829; <span class="heart-count">${baseCount}</span>`;
+  heart.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const liked = heart.dataset.liked === 'true';
+    const base = parseInt(heart.dataset.baseCount, 10);
+    const countEl = heart.querySelector('.heart-count');
+    if (liked) {
+      heart.dataset.liked = 'false';
+      heart.classList.remove('liked');
+      countEl.textContent = base;
+    } else {
+      heart.dataset.liked = 'true';
+      heart.classList.add('liked');
+      countEl.textContent = base + 1;
+      heart.classList.remove('pop');
+      void heart.offsetWidth;
+      heart.classList.add('pop');
+    }
+  });
+});
+
+/* =============================================================
    NAVBAR SCROLL STATE + ACTIVE LINK
 ============================================================= */
 const header = document.getElementById('siteHeader');
@@ -1730,6 +1905,12 @@ function resetAutoplay(){
   tAutoplay = setInterval(() => goToSlide(tIndex + 1), 6000);
 }
 resetAutoplay();
+
+const testimonialWrap = document.querySelector('.testimonial-wrap');
+if (testimonialWrap) {
+  testimonialWrap.addEventListener('mouseenter', () => clearInterval(tAutoplay));
+  testimonialWrap.addEventListener('mouseleave', resetAutoplay);
+}
 
 /* =============================================================
    SCROLL TO TOP
