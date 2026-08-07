@@ -107,6 +107,33 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;color:var(--gold);}
 }
 
 /* =============================================================
+   CATEGORY QUICK NAV
+============================================================= */
+.category-nav-section{padding:34px 6vw 8px;background:var(--black);}
+.category-scroll{
+  display:flex;gap:24px;overflow-x:auto;padding:4px 2px 12px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.category-scroll::-webkit-scrollbar{display:none;}
+.category-circle{
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  flex-shrink:0;width:82px;text-align:center;cursor:pointer;
+}
+.category-thumb{
+  width:70px;height:70px;border-radius:50%;background-size:cover;background-position:center;
+  border:2.5px solid var(--card);box-shadow:0 6px 16px rgba(42,31,18,.15);
+  transition:transform .3s ease, box-shadow .3s ease;
+  display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+}
+.category-circle:hover .category-thumb{transform:scale(1.08) translateY(-2px);box-shadow:0 12px 26px rgba(224,64,125,.3);}
+.category-circle span{font-size:.76rem;font-weight:600;color:var(--ink);letter-spacing:.2px;}
+@media(max-width:600px){
+  .category-thumb{width:60px;height:60px;font-size:1.4rem;}
+  .category-circle{width:70px;gap:7px;}
+  .category-circle span{font-size:.7rem;}
+}
+
+/* =============================================================
    MARQUEE TICKER
 ============================================================= */
 .marquee-band{
@@ -916,6 +943,48 @@ footer{background:var(--charcoal);border-top:1px solid rgba(221,165,32,.15);padd
   </div>
 </section>
 
+<!-- CATEGORY QUICK NAV -->
+<section class="category-nav-section">
+  <div class="category-scroll">
+    <a href="#services" class="category-circle" data-tab="wedding">
+      <div class="category-thumb" style="background-image:url('media/img/stage-red-roses.jpg')"></div>
+      <span>Wedding</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="nikkah">
+      <div class="category-thumb" style="background-image:url('media/img/stage-white-floral.jpg')"></div>
+      <span>Nikkah</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="wedding">
+      <div class="category-thumb" style="background-image:url('media/img/mehndi-neon-sign.jpg')"></div>
+      <span>Mehndi</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="birthday">
+      <div class="category-thumb" style="background-image:url('media/img/gallery-birthday-balloons.jpg')"></div>
+      <span>Birthday</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="house">
+      <div class="category-thumb" style="background-image:url('media/img/gallery-house.jpg')"></div>
+      <span>House</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="wedding">
+      <div class="category-thumb" style="background:var(--grad-vivid);">🚗</div>
+      <span>Car Decor</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="tech">
+      <div class="category-thumb" style="background:var(--grad-vivid);">🔥</div>
+      <span>Cold Fire</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="tech">
+      <div class="category-thumb" style="background-image:url('media/img/gallery-sounddj.jpg')"></div>
+      <span>Sound &amp; DJ</span>
+    </a>
+    <a href="#services" class="category-circle" data-tab="tech">
+      <div class="category-thumb" style="background-image:url('media/img/gallery-floral-ceiling.jpg')"></div>
+      <span>Custom</span>
+    </a>
+  </div>
+</section>
+
 <!-- MARQUEE TICKER -->
 <div class="marquee-band">
   <div class="marquee-track">
@@ -983,35 +1052,35 @@ footer{background:var(--charcoal);border-top:1px solid rgba(221,165,32,.15);padd
 
   <div class="gallery-grid" id="galleryGrid">
     <div class="gallery-item reveal" data-cat="weddings">
-      <div class="post-media" style="background-image:url('media/img/gallery-stage-sofa.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-stage-sofa.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 214</span></div>
         <p class="post-caption">Chandelier walk to the stage, done for a wedding this season in Lahore.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="nikkah">
-      <div class="post-media" style="background-image:url('media/img/gallery-nikkah.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-nikkah.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 189</span></div>
         <p class="post-caption">Outdoor Nikkah under string lights and a floral canopy.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="birthday">
-      <div class="post-media" style="background-image:url('media/img/gallery-birthday-balloons.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-birthday-balloons.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 96</span></div>
         <p class="post-caption">Balloon arch and garlands for a birthday, set up right in the dining room.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="mehndi">
-      <div class="post-media" style="background-image:url('media/img/gallery-mehndi.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-mehndi.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 268</span></div>
         <p class="post-caption">Orange and white florals for a Mehndi night in Lahore.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="mehndi">
-      <div class="post-media" style="background-image:url('media/img/gallery-mehndi-drape.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-mehndi-drape.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 198</span></div>
         <p class="post-caption">Hanging strands and marigolds for a Mehndi ceiling.</p>
@@ -1039,70 +1108,70 @@ footer{background:var(--charcoal);border-top:1px solid rgba(221,165,32,.15);padd
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="house">
-      <div class="post-media" style="background-image:url('media/img/gallery-house.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-house.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 176</span></div>
         <p class="post-caption">Warm draped lighting for an indoor hall corner.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="weddings">
-      <div class="post-media" style="background-image:url('media/img/gallery-sounddj.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-sounddj.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 64</span></div>
         <p class="post-caption">Our crew wheeling in the sound rig before doors open.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="weddings">
-      <div class="post-media" style="background-image:url('media/img/gallery-stage-backdrop.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-stage-backdrop.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 233</span></div>
         <p class="post-caption">Pink and red drape reveal for a Barat stage.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="weddings">
-      <div class="post-media" style="background-image:url('media/img/gallery-floral-ceiling.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-floral-ceiling.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 257</span></div>
         <p class="post-caption">Crystal and floral canopy hung over the head table.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="house">
-      <div class="post-media" style="background-image:url('media/img/gallery-arch-hallway.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-arch-hallway.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 121</span></div>
         <p class="post-caption">White floral arch marking the hall entrance.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="weddings">
-      <div class="post-media" style="background-image:url('media/img/stage-red-roses.jpg')"></div>
+      <div class="post-media" data-bg="media/img/stage-red-roses.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 342</span></div>
         <p class="post-caption">A full red rose wall for a Barat stage, chandeliers and all.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="nikkah">
-      <div class="post-media" style="background-image:url('media/img/stage-white-floral.jpg')"></div>
+      <div class="post-media" data-bg="media/img/stage-white-floral.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 276</span></div>
         <p class="post-caption">White and green floral wall for a Nikkah, crystal strands hanging through it.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="mehndi">
-      <div class="post-media" style="background-image:url('media/img/mehndi-neon-sign.jpg')"></div>
+      <div class="post-media" data-bg="media/img/mehndi-neon-sign.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 289</span></div>
         <p class="post-caption">Neon sign backdrop with hanging pink tassels for a Mehndi.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="house">
-      <div class="post-media" style="background-image:url('media/img/entrance-aisle-wide.jpg')"></div>
+      <div class="post-media" data-bg="media/img/entrance-aisle-wide.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 205</span></div>
         <p class="post-caption">The walk in: hanging chandeliers down the full length of the aisle.</p>
       </div>
     </div>
     <div class="gallery-item reveal" data-cat="weddings">
-      <div class="post-media" style="background-image:url('media/img/gallery-floral-stage-mirror.jpg')"></div>
+      <div class="post-media" data-bg="media/img/gallery-floral-stage-mirror.jpg"></div>
       <div class="post-footer">
         <div class="post-row"><div class="post-avatar">O</div><span class="post-handle">oriana.events</span><span class="post-heart">♥ 224</span></div>
         <p class="post-caption">Greenery and blush florals reflected on a mirrored stage floor.</p>
@@ -1125,79 +1194,79 @@ footer{background:var(--charcoal);border-top:1px solid rgba(221,165,32,.15);padd
 
   <div class="reel-grid" id="reelGrid">
     <div class="reel-item reveal" data-clip="media/video/clip-stage-reveal.mp4">
-      <video src="media/video/clip-stage-reveal.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-stage-reveal.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Stage Reveal</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-blue-aisle.mp4">
-      <video src="media/video/clip-blue-aisle.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-blue-aisle.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Chandelier Aisle</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-floral-stage.mp4">
-      <video src="media/video/clip-floral-stage.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-floral-stage.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Floral Stage</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-crystal-canopy.mp4">
-      <video src="media/video/clip-crystal-canopy.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-crystal-canopy.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Crystal Canopy</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-mehndi-ceiling.mp4">
-      <video src="media/video/clip-mehndi-ceiling.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-mehndi-ceiling.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Mehndi Ceiling</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-mehndi-drape.mp4">
-      <video src="media/video/clip-mehndi-drape.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-mehndi-drape.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Mehndi Drape</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-sound-dj.mp4">
-      <video src="media/video/clip-sound-dj.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-sound-dj.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Sound &amp; DJ Setup</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-outdoor-mandap.mp4">
-      <video src="media/video/clip-outdoor-mandap.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-outdoor-mandap.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Outdoor Mandap</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-crystal-archway.mp4">
-      <video src="media/video/clip-crystal-archway.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-crystal-archway.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Crystal Archway</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-hall-pan.mp4">
-      <video src="media/video/clip-hall-pan.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-hall-pan.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Hall Walkthrough</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-birthday-balloons.mp4">
-      <video src="media/video/clip-birthday-balloons.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-birthday-balloons.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Birthday Balloons</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-floral-stage-tour.mp4">
-      <video src="media/video/clip-floral-stage-tour.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-floral-stage-tour.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Floral Stage Tour</div>
     </div>
     <div class="reel-item reveal" data-clip="media/video/clip-aisle-walk.mp4">
-      <video src="media/video/clip-aisle-walk.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video data-src="media/video/clip-aisle-walk.mp4" muted loop playsinline preload="none"></video>
       <div class="reel-top"><div class="reel-progress"><span></span><span></span><span></span></div><div class="reel-who"><div class="reel-avatar">O</div><span class="reel-handle">oriana.events</span></div></div>
       <div class="reel-mute">🔇</div>
       <div class="reel-label">Aisle Walk</div>
@@ -1622,10 +1691,10 @@ services.forEach(s => {
   card.className = 'service-card reveal';
   card.dataset.cat = s.cat;
   const mediaInner = s.img ? '' : `<span class="placeholder-icon">${s.icon}</span>`;
-  const mediaStyle = s.img ? ` style="background-image:url('${s.img}')"` : '';
+  const mediaBg = s.img ? ` data-bg="${s.img}"` : '';
   const mediaClass = s.img ? '' : ` ${s.gradient}`;
   card.innerHTML = `
-    <div class="service-media${mediaClass}"${mediaStyle}>${mediaInner}</div>
+    <div class="service-media${mediaClass}"${mediaBg}>${mediaInner}</div>
     <div class="service-icon-badge">${s.icon}</div>
     <div class="service-body">
       <h3>${s.name}</h3>
@@ -1637,16 +1706,20 @@ services.forEach(s => {
 });
 
 /* service tabs filter */
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const tab = btn.dataset.tab;
-    document.querySelectorAll('.service-card').forEach(card => {
-      const show = tab === 'all' || card.dataset.cat === tab;
-      card.style.display = show ? 'flex' : 'none';
-    });
+function selectServiceTab(tab){
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.service-card').forEach(card => {
+    const show = tab === 'all' || card.dataset.cat === tab;
+    card.style.display = show ? 'flex' : 'none';
   });
+}
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => selectServiceTab(btn.dataset.tab));
+});
+
+/* category quick-nav -> jump to matching service tab */
+document.querySelectorAll('.category-circle[data-tab]').forEach(circle => {
+  circle.addEventListener('click', () => selectServiceTab(circle.dataset.tab));
 });
 
 /* =============================================================
@@ -1854,6 +1927,45 @@ function observeReveals(){
 observeReveals();
 
 /* =============================================================
+   LAZY LOAD REEL VIDEOS (fixes slow mobile load — was 13 autoplay
+   videos / ~16MB all downloading on page load at once)
+============================================================= */
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      if (video.dataset.src) {
+        video.src = video.dataset.src;
+        video.removeAttribute('data-src');
+        video.load();
+      }
+      video.play().catch(() => {});
+    } else if (!video.paused) {
+      video.pause();
+    }
+  });
+}, { threshold: 0.15, rootMargin: '200px 0px' });
+document.querySelectorAll('.reel-item video[data-src]').forEach(video => videoObserver.observe(video));
+
+/* =============================================================
+   LAZY LOAD BACKGROUND IMAGES (gallery + service card photos)
+============================================================= */
+const bgObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (entry.isIntersecting && el.dataset.bg) {
+      el.style.backgroundImage = `url('${el.dataset.bg}')`;
+      el.removeAttribute('data-bg');
+      bgObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.01, rootMargin: '300px 0px' });
+function observeLazyBackgrounds(){
+  document.querySelectorAll('[data-bg]').forEach(el => bgObserver.observe(el));
+}
+observeLazyBackgrounds();
+
+/* =============================================================
    STAT COUNTERS
 ============================================================= */
 const statObserver = new IntersectionObserver((entries) => {
@@ -1932,7 +2044,7 @@ function resizeCanvas(){
   canvas.height = hero.offsetHeight;
 }
 function createParticles(){
-  const count = window.innerWidth < 700 ? 35 : 70;
+  const count = window.innerWidth < 700 ? 16 : 70;
   particles = Array.from({length: count}, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
@@ -1942,7 +2054,9 @@ function createParticles(){
     alpha: Math.random() * 0.5 + 0.2
   }));
 }
+let particlesRunning = false;
 function animateParticles(){
+  if (!particlesRunning) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.forEach(p => {
     ctx.beginPath();
@@ -1957,8 +2071,20 @@ function animateParticles(){
 }
 resizeCanvas();
 createParticles();
-animateParticles();
 window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
+
+/* pause particle animation when hero scrolls out of view - saves CPU/battery, esp. on mobile */
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !particlesRunning) {
+      particlesRunning = true;
+      animateParticles();
+    } else if (!entry.isIntersecting) {
+      particlesRunning = false;
+    }
+  });
+}, { threshold: 0 });
+heroObserver.observe(document.querySelector('.hero'));
 
 /* =============================================================
    3D TILT ON CARDS
