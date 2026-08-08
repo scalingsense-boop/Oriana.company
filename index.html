@@ -426,7 +426,9 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
 .service-media{
   position:relative;height:180px;background-size:cover;background-position:center;
   display:flex;align-items:center;justify-content:center;
+  transition:transform .7s cubic-bezier(.16,.84,.44,1);
 }
+.service-card:hover .service-media{transform:scale(1.08);}
 .service-media::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.28));
@@ -525,7 +527,9 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
 .post-media{
   position:relative;aspect-ratio:1/1;background-size:cover;background-position:center;
   display:flex;align-items:center;justify-content:center;
+  transition:transform .7s cubic-bezier(.16,.84,.44,1);
 }
+.gallery-item:hover .post-media{transform:scale(1.08);}
 .post-media .placeholder-icon{font-size:3rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15));}
 .post-media[style*="background-image"]{cursor:zoom-in;}
 .post-media[style*="background-image"]::before{
@@ -628,7 +632,8 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
   transition:transform .4s ease, box-shadow .4s ease;
 }
 .reel-item:hover{box-shadow:0 20px 45px rgba(224,64,125,.25),0 8px 22px rgba(221,165,32,.18);}
-.reel-item video{width:100%;height:100%;object-fit:cover;display:block;}
+.reel-item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.16,.84,.44,1);}
+.reel-item:hover video{transform:scale(1.08);}
 .reel-top{
   position:absolute;top:0;left:0;right:0;z-index:2;padding:10px 10px 0;
 }
@@ -666,7 +671,8 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
   padding:36px 26px;text-align:center;transition:.4s;
 }
 .why-card:hover{border-color:var(--gold);box-shadow:0 26px 55px rgba(42,31,18,.13),0 8px 22px rgba(221,165,32,.14);}
-.why-card .icon{font-size:2.4rem;margin-bottom:16px;}
+.why-card .icon{font-size:2.4rem;margin-bottom:16px;display:inline-block;transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
+.why-card:hover .icon{transform:scale(1.18) rotate(-6deg);}
 .why-card h3{font-size:1.35rem;margin-bottom:12px;}
 .why-card p{color:#4A3F33;font-size:.9rem;line-height:1.7;}
 
@@ -749,6 +755,11 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
 .wa-contact-icon{
   width:64px;height:64px;border-radius:50%;background:#25D366;margin:0 auto 22px;
   display:flex;align-items:center;justify-content:center;
+  animation:waRing 2.8s ease-in-out infinite;
+}
+@keyframes waRing{
+  0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.35);}
+  50%{box-shadow:0 0 0 14px rgba(37,211,102,0);}
 }
 .wa-contact-icon svg{width:32px;height:32px;}
 .wa-contact-card h3{font-size:1.7rem;margin-bottom:14px;}
