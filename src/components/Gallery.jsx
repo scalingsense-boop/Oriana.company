@@ -8,12 +8,6 @@ import { galleryItems, galleryFilters } from '../data/gallery.js';
 
 const photoItems = galleryItems.filter((g) => g.bg);
 
-function bentoClass(i) {
-  if (i % 7 === 0) return 'b-big';
-  if (i % 5 === 3) return 'b-wide';
-  return '';
-}
-
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [liked, setLiked] = useState(() => galleryItems.map(() => false));
@@ -78,7 +72,7 @@ export default function Gallery() {
         {galleryItems.map((item, i) => {
           const hidden = activeFilter !== 'all' && item.cat !== activeFilter;
           return (
-            <Reveal key={i} delay={(i % 6) * 0.06} className={`${hidden ? 'hidden-item' : ''} ${bentoClass(i)}`.trim()}>
+            <Reveal key={i} delay={(i % 6) * 0.06} className={hidden ? 'hidden-item' : ''}>
               <TiltCard className="gallery-item" liftY={-6} scaleAmt={1.015} maxTilt={5}>
                 <LazyBg
                   src={item.bg}

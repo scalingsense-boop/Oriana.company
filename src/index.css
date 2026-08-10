@@ -494,22 +494,6 @@ li.services-item:hover .dropdown{opacity:1;visibility:visible;top:calc(100% + 8p
 @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
 
-/* editorial bento sizing - desktop only, above the 3-col breakpoint.
-   the size class lives on the Reveal wrapper (the actual grid item);
-   .gallery-item is a nested child that needs to stretch to fill it. */
-@media(min-width:901px){
-  .gallery-grid{grid-auto-rows:200px;grid-auto-flow:dense;}
-  .gallery-grid > .b-wide{grid-column:span 2;}
-  .gallery-grid > .b-tall{grid-row:span 2;}
-  .gallery-grid > .b-big{grid-column:span 2;grid-row:span 2;}
-  .b-wide .gallery-item,
-  .b-tall .gallery-item,
-  .b-big .gallery-item{height:100%;}
-  .b-wide .post-media,
-  .b-tall .post-media,
-  .b-big .post-media{aspect-ratio:auto;flex:1;}
-}
-
 .gallery-item{
   position:relative;border-radius:14px;overflow:hidden;
   border:1px solid rgba(221,165,32,.18);background:var(--card);
