@@ -842,8 +842,10 @@ body.custom-cursor-active .btn{cursor:none;}
 .custom-cursor-dot{
   position:fixed;top:0;left:0;width:8px;height:8px;margin:-4px 0 0 -4px;
   border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;
+  will-change:transform;
 }
 .custom-cursor-ring{
   position:fixed;top:0;left:0;width:36px;height:36px;margin:-18px 0 0 -18px;
   border-radius:50%;border:1.5px solid var(--gold);pointer-events:none;z-index:99998;
+  will-change:transform;
 }
