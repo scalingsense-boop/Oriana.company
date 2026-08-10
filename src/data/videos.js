@@ -12,4 +12,6 @@ export const videoItems = [
   { src: '/media/video/clip-birthday-balloons.mp4', label: 'Birthday Balloons' },
   { src: '/media/video/clip-floral-stage-tour.mp4', label: 'Floral Stage Tour' },
   { src: '/media/video/clip-aisle-walk.mp4', label: 'Aisle Walk' },
+  { src: '/media/video/clip-balloon-aisle-entrance.mp4', label: 'Balloon Aisle Entrance' },
+  { src: '/media/video/clip-coldfire-dual-fountain.mp4', label: 'Cold Fire Entrance' },
 ];

@@ -17,6 +17,8 @@ export const galleryItems = [
   { cat: 'mehndi', bg: '/media/img/mehndi-neon-sign.jpg', likes: 289, caption: 'Neon sign backdrop with hanging pink tassels for a Mehndi.' },
   { cat: 'house', bg: '/media/img/entrance-aisle-wide.jpg', likes: 205, caption: 'The walk in: hanging chandeliers down the full length of the aisle.' },
   { cat: 'weddings', bg: '/media/img/gallery-floral-stage-mirror.jpg', likes: 224, caption: 'Greenery and blush florals reflected on a mirrored stage floor.' },
+  { cat: 'weddings', bg: '/media/img/gallery-balloon-aisle-couple.jpg', likes: 312, caption: 'The walk-in: white balloons and petals down the aisle, chandelier florals overhead.' },
+  { cat: 'weddings', bg: '/media/img/gallery-balloon-release-tent.jpg', likes: 178, caption: 'Balloon release under a draped tent, timed for the big moment.' },
 ];
 
 export const galleryFilters = [
