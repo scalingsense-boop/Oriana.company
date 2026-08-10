@@ -8,6 +8,12 @@ import { galleryItems, galleryFilters } from '../data/gallery.js';
 
 const photoItems = galleryItems.filter((g) => g.bg);
 
+function bentoClass(i) {
+  if (i % 7 === 0) return 'b-big';
+  if (i % 5 === 3) return 'b-wide';
+  return '';
+}
+
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [liked, setLiked] = useState(() => galleryItems.map(() => false));
@@ -72,10 +78,11 @@ export default function Gallery() {
         {galleryItems.map((item, i) => {
           const hidden = activeFilter !== 'all' && item.cat !== activeFilter;
           return (
-            <Reveal key={i} delay={(i % 6) * 0.06} className={hidden ? 'hidden-item' : ''}>
+            <Reveal key={i} delay={(i % 6) * 0.06} className={`${hidden ? 'hidden-item' : ''} ${bentoClass(i)}`.trim()}>
               <TiltCard className="gallery-item" liftY={-6} scaleAmt={1.015} maxTilt={5}>
                 <LazyBg
                   src={item.bg}
+                  alt={item.caption}
                   className={`post-media${item.gradient ? ` ${item.gradient}` : ''}${item.bg ? ' has-image' : ''}`}
                   onClick={() => openLightbox(item)}
                 >
@@ -102,7 +109,7 @@ export default function Gallery() {
       </div>
 
       <Reveal as="p" className="gallery-note" delay={0.1}>
-        📸 More from behind the scenes on Instagram: <a href="#" target="_blank" rel="noopener">@orianaevents</a>
+        📸 More from behind the scenes on Instagram: <a href="https://instagram.com/orianaevents" target="_blank" rel="noopener">@orianaevents</a>
       </Reveal>
 
       <Lightbox items={photoItems} index={lightboxIndex} onClose={() => setLightboxIndex(null)} onNav={navLightbox} />

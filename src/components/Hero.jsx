@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import Btn from './Btn.jsx';
 import { waLink } from '../constants.js';
 
@@ -34,6 +34,10 @@ function AnimatedStat({ target, suffix = '', label }) {
 export default function Hero() {
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const innerY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const innerOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   function handleMouseMove(e) {
     const el = heroRef.current;
@@ -116,7 +120,7 @@ export default function Hero() {
   return (
     <section className="hero" id="home" ref={heroRef} onMouseMove={handleMouseMove}>
       <canvas id="particles" ref={canvasRef}></canvas>
-      <div className="hero-inner">
+      <motion.div className="hero-inner" style={{ y: innerY, opacity: innerOpacity }}>
         <motion.span
           className="hero-eyebrow"
           initial={{ opacity: 0, y: 24 }}
@@ -154,7 +158,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
         >
-          <Btn href={waLink("Hello Oriana! I'd love to chat about decorating my event.")} target="_blank" rel="noopener" className="btn-solid">
+          <Btn href={waLink("Hello Oriana! I'd love to chat about decorating my event.")} target="_blank" rel="noopener" className="btn-solid" magnetic>
             Message Us on WhatsApp
           </Btn>
           <Btn href="#gallery" className="btn-outline">See Our Work</Btn>
@@ -174,7 +178,7 @@ export default function Hero() {
           <AnimatedStat target={13} suffix="" label="Services Offered" />
           <AnimatedStat target={7} suffix="" label="Days a Week Booking" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

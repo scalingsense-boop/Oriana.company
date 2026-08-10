@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScrollTracking } from './hooks/useScrollTracking.js';
 import ScrollProgress from './components/ScrollProgress.jsx';
+import CustomCursor from './components/CustomCursor.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import CategoryNav from './components/CategoryNav.jsx';
@@ -28,6 +29,7 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       <ScrollProgress progress={progress} />
       <Header scrolled={scrolled} activeSection={activeSection} />
 

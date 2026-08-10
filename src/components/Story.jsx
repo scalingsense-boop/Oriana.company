@@ -1,14 +1,21 @@
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Reveal from './Reveal.jsx';
 import Btn from './Btn.jsx';
 import { waLink } from '../constants.js';
 
 export default function Story() {
+  const mediaRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: mediaRef, offset: ['start end', 'end start'] });
+  const mainY = useTransform(scrollYProgress, [0, 1], [-26, 26]);
+  const insetY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   return (
     <section className="section-pad" id="story">
       <div className="story-grid">
-        <Reveal className="story-media" as="div">
-          <img className="main-shot" src="/media/img/stage-floral-mirror.jpg" alt="An Oriana wedding stage with a full floral wall and mirrored floor" loading="lazy" />
-          <img className="inset-shot" src="/media/img/bts-mehndi-setup.jpg" alt="Our crew hanging florals before a Mehndi night" loading="lazy" />
+        <Reveal className="story-media" as="div" ref={mediaRef}>
+          <motion.img className="main-shot" style={{ y: mainY }} src="/media/img/stage-floral-mirror.jpg" alt="An Oriana wedding stage with a full floral wall and mirrored floor" loading="lazy" />
+          <motion.img className="inset-shot" style={{ y: insetY }} src="/media/img/bts-mehndi-setup.jpg" alt="Our crew hanging florals before a Mehndi night" loading="lazy" />
         </Reveal>
         <Reveal className="story-text" delay={0.1}>
           <span className="story-eyebrow">How We Work</span>

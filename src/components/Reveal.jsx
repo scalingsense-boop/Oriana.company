@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
 const variants = {
@@ -5,10 +6,11 @@ const variants = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
-export default function Reveal({ children, className, delay = 0, as = 'div', ...props }) {
+const Reveal = forwardRef(function Reveal({ children, className, delay = 0, as = 'div', ...props }, ref) {
   const Comp = motion[as] || motion.div;
   return (
     <Comp
+      ref={ref}
       className={className}
       variants={variants}
       initial="hidden"
@@ -20,4 +22,6 @@ export default function Reveal({ children, className, delay = 0, as = 'div', ...
       {children}
     </Comp>
   );
-}
+});
+
+export default Reveal;

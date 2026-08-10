@@ -45,6 +45,7 @@ export default function Services({ activeTab, onSelectTab }) {
               <TiltCard className="service-card" liftY={-8} scaleAmt={1.02} maxTilt={6}>
                 <LazyBg
                   src={s.img}
+                  alt={s.name}
                   className={`service-media${s.gradient ? ` ${s.gradient}` : ''}`}
                 >
                   {!s.img && <span className="placeholder-icon">{s.icon}</span>}

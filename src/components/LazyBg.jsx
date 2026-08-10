@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function LazyBg({ src, className, children, onClick, rootMargin = '300px 0px' }) {
+export default function LazyBg({ src, alt, className, children, onClick, rootMargin = '300px 0px' }) {
   const ref = useRef(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -29,6 +29,8 @@ export default function LazyBg({ src, className, children, onClick, rootMargin =
       className={className}
       style={loaded ? { backgroundImage: `url('${src}')` } : undefined}
       onClick={onClick}
+      role={src ? 'img' : undefined}
+      aria-label={src ? alt : undefined}
     >
       {children}
     </div>

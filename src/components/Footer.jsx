@@ -55,14 +55,8 @@ export default function Footer() {
             Chat With Us
           </a>
           <div className="social-row">
-            <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <a href="https://instagram.com/orianaevents" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
-            </a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M15 8h-2a2 2 0 00-2 2v10M9 12h4M17 8h-2a2 2 0 00-2 2v10" /></svg>
-            </a>
-            <a href="#" target="_blank" rel="noopener" aria-label="TikTok">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 4v10.5a3.5 3.5 0 11-3.5-3.5H11M14 4a5 5 0 005 5" /></svg>
             </a>
           </div>
           <div className="footer-phone">📞 <a href="tel:+923286681373">+92 328 6681373</a></div>

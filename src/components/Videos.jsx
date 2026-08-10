@@ -38,7 +38,7 @@ function ReelItem({ item, delay }) {
   return (
     <Reveal delay={delay}>
       <TiltCard className="reel-item" liftY={-6} scaleAmt={1.02} maxTilt={5}>
-        <video ref={videoRef} src={loaded ? item.src : undefined} muted loop playsInline preload="none" />
+        <video ref={videoRef} src={loaded ? item.src : undefined} aria-label={item.label} muted loop playsInline preload="none" />
         <div className="reel-top">
           <div className="reel-progress"><span></span><span></span><span></span></div>
           <div className="reel-who">

@@ -26,7 +26,7 @@ export default function Contact() {
         </div>
         <h3>Message Us on WhatsApp</h3>
         <p>Tell us your event type, date, and city, and we&apos;ll reply with what&apos;s possible for your venue and budget. Usually within a few hours.</p>
-        <Btn href={waLink("Hello Oriana! I'd like to ask about decorating my event.")} target="_blank" rel="noopener" className="btn-solid">
+        <Btn href={waLink("Hello Oriana! I'd like to ask about decorating my event.")} target="_blank" rel="noopener" className="btn-solid" magnetic>
           Start a Chat
         </Btn>
 
@@ -40,7 +40,7 @@ export default function Contact() {
       <Reveal className="contact-info-row" delay={0.1}>
         <div className="info-item">📍 Lahore, Pakistan</div>
         <div className="info-item">⏰ 7 days a week, 9 AM – 11 PM</div>
-        <div className="info-item">📸 <a href="#" target="_blank" rel="noopener">@orianaevents</a></div>
+        <div className="info-item">📸 <a href="https://instagram.com/orianaevents" target="_blank" rel="noopener">@orianaevents</a></div>
       </Reveal>
     </section>
   );
