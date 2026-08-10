@@ -1,0 +1,30 @@
+export const galleryItems = [
+  { cat: 'weddings', bg: '/media/img/gallery-stage-sofa.jpg', likes: 214, caption: 'Chandelier walk to the stage, done for a wedding this season in Lahore.' },
+  { cat: 'nikkah', bg: '/media/img/gallery-nikkah.jpg', likes: 189, caption: 'Outdoor Nikkah under string lights and a floral canopy.' },
+  { cat: 'birthday', bg: '/media/img/gallery-birthday-balloons.jpg', likes: 96, caption: 'Balloon arch and garlands for a birthday, set up right in the dining room.' },
+  { cat: 'mehndi', bg: '/media/img/gallery-mehndi.jpg', likes: 268, caption: 'Orange and white florals for a Mehndi night in Lahore.' },
+  { cat: 'mehndi', bg: '/media/img/gallery-mehndi-drape.jpg', likes: 198, caption: 'Hanging strands and marigolds for a Mehndi ceiling.' },
+  { cat: 'entry', bg: '/media/img/entry-coldfire-effect.jpg', likes: 301, caption: "Cold spark entrance for the couple's walk-in. Always the loudest reaction of the night." },
+  { cat: 'weddings', gradient: 'g6', icon: '🚗', likes: 142, caption: 'Fresh florals on the bridal car, styled to match the stage.' },
+  { cat: 'house', gradient: 'g7', icon: '🪜', likes: 88, caption: 'A staircase turned into one of the better photo spots in the house.' },
+  { cat: 'house', bg: '/media/img/gallery-house.jpg', likes: 176, caption: 'Warm draped lighting for an indoor hall corner.' },
+  { cat: 'weddings', bg: '/media/img/gallery-sounddj.jpg', likes: 64, caption: 'Our crew wheeling in the sound rig before doors open.' },
+  { cat: 'weddings', bg: '/media/img/gallery-stage-backdrop.jpg', likes: 233, caption: 'Pink and red drape reveal for a Barat stage.' },
+  { cat: 'weddings', bg: '/media/img/gallery-floral-ceiling.jpg', likes: 257, caption: 'Crystal and floral canopy hung over the head table.' },
+  { cat: 'house', bg: '/media/img/gallery-arch-hallway.jpg', likes: 121, caption: 'White floral arch marking the hall entrance.' },
+  { cat: 'weddings', bg: '/media/img/stage-red-roses.jpg', likes: 342, caption: 'A full red rose wall for a Barat stage, chandeliers and all.' },
+  { cat: 'nikkah', bg: '/media/img/stage-white-floral.jpg', likes: 276, caption: 'White and green floral wall for a Nikkah, crystal strands hanging through it.' },
+  { cat: 'mehndi', bg: '/media/img/mehndi-neon-sign.jpg', likes: 289, caption: 'Neon sign backdrop with hanging pink tassels for a Mehndi.' },
+  { cat: 'house', bg: '/media/img/entrance-aisle-wide.jpg', likes: 205, caption: 'The walk in: hanging chandeliers down the full length of the aisle.' },
+  { cat: 'weddings', bg: '/media/img/gallery-floral-stage-mirror.jpg', likes: 224, caption: 'Greenery and blush florals reflected on a mirrored stage floor.' },
+];
+
+export const galleryFilters = [
+  { label: 'All', value: 'all' },
+  { label: 'Weddings', value: 'weddings' },
+  { label: 'Birthday', value: 'birthday' },
+  { label: 'Mehndi', value: 'mehndi' },
+  { label: 'Nikkah', value: 'nikkah' },
+  { label: 'Entry Gadgets', value: 'entry' },
+  { label: 'House Decor', value: 'house' },
+];

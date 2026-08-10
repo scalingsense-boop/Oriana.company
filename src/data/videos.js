@@ -1,0 +1,15 @@
+export const videoItems = [
+  { src: '/media/video/clip-stage-reveal.mp4', label: 'Stage Reveal' },
+  { src: '/media/video/clip-blue-aisle.mp4', label: 'Chandelier Aisle' },
+  { src: '/media/video/clip-floral-stage.mp4', label: 'Floral Stage' },
+  { src: '/media/video/clip-crystal-canopy.mp4', label: 'Crystal Canopy' },
+  { src: '/media/video/clip-mehndi-ceiling.mp4', label: 'Mehndi Ceiling' },
+  { src: '/media/video/clip-mehndi-drape.mp4', label: 'Mehndi Drape' },
+  { src: '/media/video/clip-sound-dj.mp4', label: 'Sound & DJ Setup' },
+  { src: '/media/video/clip-outdoor-mandap.mp4', label: 'Outdoor Mandap' },
+  { src: '/media/video/clip-crystal-archway.mp4', label: 'Crystal Archway' },
+  { src: '/media/video/clip-hall-pan.mp4', label: 'Hall Walkthrough' },
+  { src: '/media/video/clip-birthday-balloons.mp4', label: 'Birthday Balloons' },
+  { src: '/media/video/clip-floral-stage-tour.mp4', label: 'Floral Stage Tour' },
+  { src: '/media/video/clip-aisle-walk.mp4', label: 'Aisle Walk' },
+];

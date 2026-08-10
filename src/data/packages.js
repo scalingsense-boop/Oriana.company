@@ -1,0 +1,46 @@
+export const packages = [
+  {
+    emoji: '🥈',
+    name: 'Silver Elegance',
+    best: 'Best for: Small & Intimate Events',
+    features: [
+      'Basic Event Decor Setup',
+      'House or Stage Lighting',
+      'Standard Backdrop',
+      'Floral Arrangements',
+      'On-Site Setup & Removal',
+    ],
+    popular: false,
+  },
+  {
+    emoji: '🥇',
+    name: 'Golden Prestige',
+    best: 'Best for: Weddings, Barat & Major Events',
+    features: [
+      'Full Wedding / Event Stage Setup',
+      'Grand Entrance Decoration',
+      'House or Venue Lighting',
+      'Stairs Decor',
+      'Car Decoration',
+      'Floral Installations & Backdrop',
+      'Entry Cold Fire Gadgets',
+      'On-Site Team & Full Setup',
+    ],
+    popular: true,
+  },
+  {
+    emoji: '💎',
+    name: 'Royal Diamond',
+    best: 'Best for: All-In-One Premium Experience',
+    features: [
+      'Everything in Golden Prestige',
+      'Photo Spotlight (Tracking)',
+      'Professional Sound & DJ System',
+      'Mehndi + Nikkah + Walima Decor',
+      'Barat Full Venue Setup',
+      'Custom Themed Decoration',
+      'Priority Team & On-Call Support',
+    ],
+    popular: false,
+  },
+];
