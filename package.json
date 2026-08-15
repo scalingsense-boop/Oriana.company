@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:singlefile": "cross-env SINGLEFILE=1 vite build",
+    "build": "vite build && node scripts/prerender.mjs",
+    "build:singlefile": "cross-env SINGLEFILE=1 vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "cross-env": "^10.1.0",
+    "jsdom": "^30.0.1",
     "vite": "^6.0.7",
     "vite-plugin-singlefile": "^2.3.3"
   }
