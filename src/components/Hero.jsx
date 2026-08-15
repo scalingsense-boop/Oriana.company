@@ -62,7 +62,9 @@ export default function Hero() {
     }
     function createParticles() {
       const count = window.innerWidth < 700 ? 16 : 70;
-      particles = Array.from({ length: count }, () => ({
+      const petalCount = window.innerWidth < 700 ? 5 : 12;
+      const sparkles = Array.from({ length: count }, () => ({
+        type: 'sparkle',
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         r: Math.random() * 1.8 + 0.6,
@@ -70,20 +72,54 @@ export default function Hero() {
         drift: (Math.random() - 0.5) * 0.3,
         alpha: Math.random() * 0.5 + 0.2,
       }));
+      const petals = Array.from({ length: petalCount }, () => ({
+        type: 'petal',
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 3.5 + 3,
+        speed: Math.random() * 0.35 + 0.18,
+        sway: Math.random() * 18 + 10,
+        swaySpeed: Math.random() * 0.012 + 0.006,
+        swayOffset: Math.random() * Math.PI * 2,
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.015,
+        alpha: Math.random() * 0.35 + 0.25,
+      }));
+      particles = [...sparkles, ...petals];
     }
+    let t = 0;
     function animate() {
       if (!running) return;
+      t += 1;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p) => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(221,165,32,${p.alpha})`;
-        ctx.fill();
-        p.y -= p.speed;
-        p.x += p.drift;
-        if (p.y < -10) {
-          p.y = canvas.height + 10;
-          p.x = Math.random() * canvas.width;
+        if (p.type === 'sparkle') {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(232,185,35,${p.alpha})`;
+          ctx.fill();
+          p.y -= p.speed;
+          p.x += p.drift;
+          if (p.y < -10) {
+            p.y = canvas.height + 10;
+            p.x = Math.random() * canvas.width;
+          }
+        } else {
+          const swayX = p.x + Math.sin(t * p.swaySpeed + p.swayOffset) * p.sway;
+          ctx.save();
+          ctx.translate(swayX, p.y);
+          ctx.rotate(p.rotation);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.r, p.r * 0.62, 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,158,199,${p.alpha})`;
+          ctx.fill();
+          ctx.restore();
+          p.y += p.speed;
+          p.rotation += p.rotSpeed;
+          if (p.y > canvas.height + 12) {
+            p.y = -12;
+            p.x = Math.random() * canvas.width;
+          }
         }
       });
       frameId = requestAnimationFrame(animate);
